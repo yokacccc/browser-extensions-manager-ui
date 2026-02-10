@@ -1,0 +1,26 @@
+import useExtensionFilter from "../Store";
+import ExtensionsFilter from "./ExtensionsFilter";
+import ExtensionsList from "./ExtensionsList";
+
+export default function Main() {
+    const { displayed, showAll, showActive, showInactive } = useExtensionFilter();
+
+    return (
+        <main className="extension-main__container">
+            <ExtensionsFilter
+                showAll={showAll}
+                showActive={showActive}
+                showInactive={showInactive}
+            />
+
+            {displayed.map((item) => (
+                <ExtensionsList
+                    logo={item.logo}
+                    name={item.name}
+                    description={item.description}
+                    isActive={item.isActive}
+                />
+            ))}
+        </main>
+    );
+}

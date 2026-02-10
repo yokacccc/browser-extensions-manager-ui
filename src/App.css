@@ -1,1 +1,296 @@
 @import "tailwindcss";
+
+/* @theme {
+    --color-neutral-900: #091540;
+    --color-neutral-800: #202535;
+    --color-neutral-700: #2f364b;
+    --color-neutral-600: #535868;
+    --color-neutral-300: #c6c6c6;
+    --color-neutral-200: #d6e2f5;
+    --color-neutral-100: #eeeeee;
+    --color-neutral-0: #fbfdfe;
+    --color-red-400: #f25c54;
+    --color-red-500: #de4840;
+    --color-red-700: #c7231a;
+} */
+
+:root {
+    /* 主题变量设置 */
+    --primary-app-bg-color: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%);
+    --primary-bg-color: #fbfdfe;
+    --primary-btn-bg: #fbfdfe;
+    --theme-btn-color: #eeeeee;
+    --btn-hover-bg: #fbfdfe;
+    --btn-checked-bg: #c7231a;
+    --btn-checked-text: #fbfdfe;
+    --title-color: #091540;
+    --text-color: #535868;
+
+    /* 字体变量设置 */
+    --text-1-size: 32px;
+    --text-1-weight: 700;
+    --text-1-line-Height: 100%;
+    --text-1-letter-space: -1px;
+
+    --text-2-size: 20px;
+    --text-2-weight: 700;
+    --text-2-line-Height: 120%;
+    --text-2-letter-space: -0.2px;
+
+    --text-3-size: 20px;
+    --text-3-weight: 400;
+    --text-3-line-Height: 140%;
+    --text-3-letter-space: -0.3px;
+
+    --text-4-size: 20px;
+    --text-4-weight: 500;
+    --text-4-line-Height: 140%;
+    --text-4-letter-space: -0.3px;
+
+    --text-5-size: 16px;
+    --text-5-weight: 400;
+    --text-5-line-Height: 140%;
+    --text-5-letter-space: -0.5px;
+
+    --text-6-size: 16px;
+    --text-6-weight: 500;
+    --text-6-line-Height: 140%;
+    --text-6-letter-space: -0.5px;
+}
+
+.dark {
+    --primary-app-bg-color: linear-gradient(180deg, #04091b 0%, #091540 100%);
+    --primary-bg-color: #202535;
+    --primary-btn-bg: #202535;
+    --theme-btn-color: #2f364b;
+
+    --btn-hover-bg: #535868;
+    --btn-checked-bg: #de4840;
+    --btn-checked-text: #091540;
+    --title-color: #fbfdfe;
+    --text-color: #c6c6c6;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px 16px 64px 16px;
+    height: 100vh;
+    background-image: var(--primary-app-bg-color);
+}
+
+.Header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--primary-bg-color);
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.Header__switch-theme-btn {
+    display: grid;
+    place-content: center;
+    height: 50px;
+    width: 50px;
+    background-color: var(--theme-btn-color);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* ---------------主题切换 Icon 设置--------------- */
+
+.Header__switch-theme-btn img:last-child {
+    display: none;
+}
+
+.dark .Header__switch-theme-btn img:first-child {
+    display: none;
+}
+
+.dark .Header__switch-theme-btn img:last-child {
+    display: block;
+}
+
+/* ---------------Main 设置--------------- */
+
+.extension-main__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ---------------Main - filter 设置--------------- */
+
+.extensions-filter__contanier {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    align-items: center;
+}
+
+.extensions-filter__contanier > h1 {
+    font-size: var(--text-1-size);
+    font-weight: var(--text-1-weight);
+    line-height: var(--text-1-line-Height);
+    letter-spacing: var(--text-1-letter-space);
+    color: var(--title-color);
+}
+
+.extensions__filter-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.extensions__filter-container input {
+    display: none;
+}
+
+.extensions__filter-container label {
+    font-size: var(--text-3-size);
+    font-weight: var(--text-3-weight);
+    letter-spacing: var(--text-3-letter-space);
+    line-height: var(--text-3-line-Height);
+
+    background-color: var(--primary-bg-color);
+    color: var(--title-color);
+
+    padding: 8px 20px 10px 20px;
+    border: 1px solid #d6e2f5;
+    border-radius: 23px;
+    box-shadow: 0 1px 2px 0 rgba(184, 196, 215, 0.4);
+
+    cursor: pointer;
+}
+
+.extensions__filter-container label:hover {
+    background-color: var(--btn-hover-bg);
+    opacity: 70%;
+}
+
+.extensions__filter-container input:checked + label {
+    border: none;
+    opacity: 100%;
+    background-color: var(--btn-checked-bg);
+    color: var(--btn-checked-text);
+}
+
+/* ---------------Extension item 设置--------------- */
+
+.extension__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--primary-bg-color);
+    border-radius: 20px;
+
+    border: 1px solid #d6e2f5;
+    box-shadow: 0 2px 2px 0 rgba(194, 206, 225, 0.2);
+}
+
+.extension-info__container {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 16px;
+}
+
+.extension-info__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.extension-info__text h2 {
+    font-size: var(--text-2-size);
+    font-weight: var(--text-2-weight);
+    letter-spacing: var(--text-2-letter-space);
+    line-height: var(--text-2-line-Height);
+    color: var(--title-color);
+}
+
+.extension-info__text p {
+    font-size: var(--text-5-size);
+    font-weight: var(--text-5-weight);
+    letter-spacing: var(--text-5-letter-space);
+    line-height: var(--text-5-line-Height);
+    color: var(--text-color);
+}
+
+.extension-action__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.extension-action__removeBtn {
+    display: grid;
+    place-content: center;
+    padding: 8px 16px;
+    border: 1px solid #c6c6c6;
+    border-radius: 19px;
+    background-color: var(--primary-btn-bg);
+    color: var(--title-color);
+
+    font-size: var(--text-6-size);
+    font-weight: var(--text-6-weight);
+    letter-spacing: var(--text-6-letter-space);
+    line-height: var(--text-6-line-Height);
+
+    cursor: pointer;
+}
+
+.extension-action__removeBtn:hover {
+    background-color: #c7231a;
+}
+
+/* 开启按钮 */
+
+#activeBtn {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+.extension-action__activeBtn {
+    height: 20px;
+    width: 36px;
+    background-color: #c6c6c6;
+    border-radius: 10px;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.extension-action__activeBtn .silder {
+    content: "";
+    height: 16px;
+    width: 16px;
+    background-color: #fbfdfe;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    transition: all 0.3s ease;
+}
+
+#activeBtn:checked + .silder {
+    transform: translateX(100%);
+}
+
+.extension-action__activeBtn:has(#activeBtn:checked) {
+    background-color: #de4840;
+}
