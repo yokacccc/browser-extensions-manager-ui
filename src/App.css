@@ -292,7 +292,7 @@ body {
 
 /* 开启按钮 */
 
-#activeBtn {
+.activeBtn {
     -webkit-appearance: none;
     appearance: none;
     display: none;
@@ -322,11 +322,11 @@ body {
     transition: all 0.3s ease;
 }
 
-#activeBtn:checked + .silder {
+.activeBtn:checked + .silder {
     transform: translateX(100%);
 }
 
-.extension-action__activeBtn:has(#activeBtn:checked) {
+.extension-action__activeBtn:has(.activeBtn:checked) {
     background-color: #de4840;
 }
 

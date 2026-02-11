@@ -22,7 +22,7 @@ export default function ExtensionsList({ logo, name, description, isActive }) {
                 <label className="extension-action__activeBtn">
                     <input
                         type="checkbox"
-                        id="activeBtn"
+                        className="activeBtn"
                         checked={isActive}
                         onChange={handleToggle}
                     />
