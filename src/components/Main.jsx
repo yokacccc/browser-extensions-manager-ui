@@ -21,6 +21,7 @@ export default function Main() {
                         isActive={item.isActive}
                     />
                 ))}
+                <div style={{ height: "20px" }}></div>
             </div>
         </main>
     );

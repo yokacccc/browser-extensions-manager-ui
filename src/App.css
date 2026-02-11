@@ -107,6 +107,14 @@ body {
     border-radius: 10px;
 }
 
+.logoColor {
+    fill: #000000;
+}
+
+.dark .logoColor {
+    fill: white;
+}
+
 .Header__switch-theme-btn {
     display: grid;
     place-content: center;
@@ -134,7 +142,7 @@ body {
 .extension__grid-display {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 12px;
 }
 
 /* ---------------Main - filter 设置--------------- */
