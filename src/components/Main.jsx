@@ -21,7 +21,6 @@ export default function Main() {
                         isActive={item.isActive}
                     />
                 ))}
-                <div className="h-20 w-full shrink-0"></div>
             </div>
         </main>
     );
