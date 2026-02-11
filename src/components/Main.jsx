@@ -12,15 +12,16 @@ export default function Main() {
                 showActive={showActive}
                 showInactive={showInactive}
             />
-
-            {displayed.map((item) => (
-                <ExtensionsList
-                    logo={item.logo}
-                    name={item.name}
-                    description={item.description}
-                    isActive={item.isActive}
-                />
-            ))}
+            <div className="extension__grid-display">
+                {displayed.map((item) => (
+                    <ExtensionsList
+                        logo={item.logo}
+                        name={item.name}
+                        description={item.description}
+                        isActive={item.isActive}
+                    />
+                ))}
+            </div>
         </main>
     );
 }

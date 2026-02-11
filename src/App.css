@@ -23,6 +23,8 @@
     --btn-hover-bg: #fbfdfe;
     --btn-checked-bg: #c7231a;
     --btn-checked-text: #fbfdfe;
+    --border-color: #d6e2f5;
+    --focus-btn-bg: #eeeeee;
     --title-color: #091540;
     --text-color: #535868;
 
@@ -63,6 +65,8 @@
     --primary-bg-color: #202535;
     --primary-btn-bg: #202535;
     --theme-btn-color: #2f364b;
+    --border-color: #535868;
+    --focus-btn-bg: #535868;
 
     --btn-hover-bg: #535868;
     --btn-checked-bg: #de4840;
@@ -72,7 +76,14 @@
 }
 
 body {
+    display: grid;
+    place-content: center;
     font-family: "Noto Sans", sans-serif;
+    height: 100vh;
+
+    background-image: var(--primary-app-bg-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .App {
@@ -80,8 +91,9 @@ body {
     flex-direction: column;
     gap: 40px;
     padding: 20px 16px 64px 16px;
+
     height: 100vh;
-    background-image: var(--primary-app-bg-color);
+    max-width: 375px;
 }
 
 .Header-container {
@@ -105,23 +117,21 @@ body {
     cursor: pointer;
 }
 
-/* ---------------主题切换 Icon 设置--------------- */
-
-.Header__switch-theme-btn img:last-child {
-    display: none;
-}
-
-.dark .Header__switch-theme-btn img:first-child {
-    display: none;
-}
-
-.dark .Header__switch-theme-btn img:last-child {
-    display: block;
+.Header__switch-theme-btn:focus-visible {
+    outline: 2px solid #c7231a;
+    outline-offset: 2px;
+    background-color: var(--focus-btn-bg);
 }
 
 /* ---------------Main 设置--------------- */
 
 .extension-main__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.extension__grid-display {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -149,10 +159,21 @@ body {
     display: flex;
     flex-direction: row;
     gap: 12px;
+
+    position: relative;
 }
 
 .extensions__filter-container input {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.extensions__filter-container input:focus-visible + label {
+    outline: 2px solid #c7231a;
+    outline-offset: 2px;
+    border: none;
+    background-color: var(--focus-btn-bg);
 }
 
 .extensions__filter-container label {
@@ -165,7 +186,7 @@ body {
     color: var(--title-color);
 
     padding: 8px 20px 10px 20px;
-    border: 1px solid #d6e2f5;
+    border: 1px solid var(--border-color);
     border-radius: 23px;
     box-shadow: 0 1px 2px 0 rgba(184, 196, 215, 0.4);
 
@@ -194,7 +215,7 @@ body {
     background-color: var(--primary-bg-color);
     border-radius: 20px;
 
-    border: 1px solid #d6e2f5;
+    border: 1px solid var(--border-color);
     box-shadow: 0 2px 2px 0 rgba(194, 206, 225, 0.2);
 }
 
@@ -238,7 +259,7 @@ body {
     display: grid;
     place-content: center;
     padding: 8px 16px;
-    border: 1px solid #c6c6c6;
+    border: 1px solid var(--border-color);
     border-radius: 19px;
     background-color: var(--primary-btn-bg);
     color: var(--title-color);
@@ -253,6 +274,13 @@ body {
 
 .extension-action__removeBtn:hover {
     background-color: #c7231a;
+}
+
+.extension-action__removeBtn:focus-visible {
+    outline: 2px solid #c7231a;
+    outline-offset: 2px;
+    border: none;
+    background-color: var(--focus-btn-bg);
 }
 
 /* 开启按钮 */
@@ -293,4 +321,28 @@ body {
 
 .extension-action__activeBtn:has(#activeBtn:checked) {
     background-color: #de4840;
+}
+
+/* 媒体查询 */
+
+@media (min-width: 768px) {
+    .App {
+        max-width: 704px;
+    }
+
+    .extension__grid-display {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
+    .App {
+        max-width: 1170px;
+    }
+
+    .extension__grid-display {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
